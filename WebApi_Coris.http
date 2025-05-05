@@ -1,0 +1,6 @@
+@WebApi_Coris_HostAddress = http://localhost:5008
+
+GET {{WebApi_Coris_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###

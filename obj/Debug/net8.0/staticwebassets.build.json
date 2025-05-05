@@ -1,0 +1,12 @@
+{
+  "Version": 1,
+  "Hash": "Rk/zUUGZbRdfwjaMC96GMnYqbG3yOQgrJATEU8Z0E5M=",
+  "Source": "WebApi_Coris",
+  "BasePath": "_content/WebApi_Coris",
+  "Mode": "Default",
+  "ManifestType": "Build",
+  "ReferencedProjectsConfiguration": [],
+  "DiscoveryPatterns": [],
+  "Assets": [],
+  "Endpoints": []
+}
