@@ -1,1 +1,45 @@
+# Build outputs
+bin/
+obj/
+
+# VS Code
+.vscode/
+
+# Visual Studio cache & configurações de usuário
 .vs/
+*.user
+*.suo
+*.userosscache
+*.sln.docstates
+
+# Rider
+.idea/
+
+# arquivos de log
+*.log
+
+# Test Results
+TestResults/
+coverage*.xml
+
+# pacotes NuGet
+*.nupkg
+# pasta de pacotes local (se você usar)
+packages/
+
+# EF Migrations
+Migrations/
+
+# arquivos secretos (ex: User Secrets)
+secrets.json
+appsettings.Development.json
+
+# outros
+*.dbmdl       # SQL Server Database Project
+*.jfm         # JetBrains Rider cache
+_Dependencies/
+
+# OS
+Thumbs.db
+desktop.ini
+.DS_Store
