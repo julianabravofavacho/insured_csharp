@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("WebApi_Coris")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+acfb5e8ceaa32e13a90c5665fe632987def5c625")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+5d1f29ac018340846c2d415d53dbf7b30e04129b")]
 [assembly: System.Reflection.AssemblyProductAttribute("WebApi_Coris")]
 [assembly: System.Reflection.AssemblyTitleAttribute("WebApi_Coris")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
