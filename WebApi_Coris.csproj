@@ -5,6 +5,9 @@
     <Nullable>enable</Nullable>
     <ImplicitUsings>enable</ImplicitUsings>
   </PropertyGroup>
+<PropertyGroup Condition="'$(Configuration)'=='Debug'">
+  <OutputPath>bin\Debug\net8.0\_DebugBuild\</OutputPath>
+</PropertyGroup>
 
   <ItemGroup>
     <PackageReference Include="App.Metrics.Formatters.Prometheus" Version="4.3.0" />

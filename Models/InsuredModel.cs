@@ -16,7 +16,7 @@ namespace WebApi_Coris.Models
         public string? neighborhood { get; set; } = null;
         public string? city { get; set; } = null;
         public string? state { get; set; } = null;
-        public DateTime created_at { get; set; } = DateTime.UtcNow;
-        public DateTime updated_at { get; set; } = DateTime.UtcNow;
+        public DateTime created_at { get; set; } = DateTime.Now;
+        public DateTime updated_at { get; set; } = DateTime.Now;
     }
 }

@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\Juliana Bravo\\WebApi_Coris\\WebApi_Coris\\WebApi_Coris.csproj": {}
+    "C:\\Users\\Juliana Bravo\\Coris\\insured_csharp\\WebApi_Coris\\WebApi_Coris.csproj": {}
   },
   "projects": {
-    "C:\\Users\\Juliana Bravo\\WebApi_Coris\\WebApi_Coris\\WebApi_Coris.csproj": {
+    "C:\\Users\\Juliana Bravo\\Coris\\insured_csharp\\WebApi_Coris\\WebApi_Coris.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\Juliana Bravo\\WebApi_Coris\\WebApi_Coris\\WebApi_Coris.csproj",
+        "projectUniqueName": "C:\\Users\\Juliana Bravo\\Coris\\insured_csharp\\WebApi_Coris\\WebApi_Coris.csproj",
         "projectName": "WebApi_Coris",
-        "projectPath": "C:\\Users\\Juliana Bravo\\WebApi_Coris\\WebApi_Coris\\WebApi_Coris.csproj",
+        "projectPath": "C:\\Users\\Juliana Bravo\\Coris\\insured_csharp\\WebApi_Coris\\WebApi_Coris.csproj",
         "packagesPath": "C:\\Users\\Juliana Bravo\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\Juliana Bravo\\WebApi_Coris\\WebApi_Coris\\obj\\",
+        "outputPath": "C:\\Users\\Juliana Bravo\\Coris\\insured_csharp\\WebApi_Coris\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"

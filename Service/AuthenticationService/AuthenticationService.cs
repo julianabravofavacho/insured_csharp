@@ -48,7 +48,7 @@ namespace WebApi_Coris.Service.AuthenticationService
             var minutes = _config.GetValue<int>("Jwt:TokenValidityMinutes", 60);
             var key = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(secret));
             var creds = new SigningCredentials(key, SecurityAlgorithms.HmacSha256);
-            var expiresAt = DateTime.UtcNow.AddMinutes(minutes);
+            var expiresAt = DateTime.Now.AddMinutes(minutes);
 
             var claims = new[] {
                 new Claim(JwtRegisteredClaimNames.Sub, user.id.ToString()),
@@ -75,13 +75,13 @@ namespace WebApi_Coris.Service.AuthenticationService
                 token = jwt,
                 abilities = abilitiesJson,
                 expires_at = expiresAt,
-                created_at = DateTime.UtcNow,
-                updated_at = DateTime.UtcNow
+                created_at = DateTime.Now,
+                updated_at = DateTime.Now
             };
             _context.PersonalAccessTokens.Add(pat);
             await _context.SaveChangesAsync();
 
-            return new LoginResponseDto(jwt, expiresAt);
+            return new LoginResponseDto(jwt, expiresAt, abilitiesObj);
         }
         public async Task LogoutAsync(string token)
         {

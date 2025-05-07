@@ -1,12 +1,10 @@
 ﻿using Microsoft.EntityFrameworkCore;
-using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.IdentityModel.Tokens;
 using Microsoft.OpenApi.Models;
 using System.Text;
 using System.Text.Json;
-using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Identity;
 using WebApi_Coris.DataContext;
 using WebApi_Coris.Infrastructure.Auth;
@@ -87,6 +85,8 @@ builder.Services.AddAuthorization(options =>
         policy.RequireAuthenticatedUser());
 });
 
+
+
 // 7) Swagger
 builder.Services.AddSwaggerGen(c =>
 {
@@ -120,7 +120,21 @@ builder.Services.AddControllers();
 builder.Services.AddDbContext<ApplicationDbContext>(options =>
     options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection")));
 
+builder.Services.AddCors(options =>
+{
+    options.AddPolicy("AllowReactClient", policy =>
+    {
+        policy
+            .WithOrigins("http://localhost:3000")    // URL do seu React
+            .AllowAnyHeader()                         // cabeçalhos
+            .AllowAnyMethod()                         // GET, POST, PUT…
+            .AllowCredentials();                      // se usar cookies ou auth
+    });
+});
+
 var app = builder.Build();
+
+app.UseCors("AllowReactClient");
 
 if (app.Environment.IsDevelopment())
 {

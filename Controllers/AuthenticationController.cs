@@ -14,33 +14,51 @@ namespace WebApi_Coris.Controllers
 
             [HttpPost("login")]
             [AllowAnonymous]
-            public async Task<ActionResult<LoginResponseDto>> Login(LoginRequestDto dto)
+        public async Task<IActionResult> Login([FromBody] LoginRequestDto dto)
+        {
+            try
             {
-                var res = await _auth.LoginAsync(dto);
-                return Ok(res);
+                var loginResult = await _auth.LoginAsync(dto);
+                return Ok(new
+                {
+                    sucesso = true,
+                    dados = loginResult,
+                    mensagem = string.Empty
+                });
             }
-        [HttpPost("logout")]
+            catch (UnauthorizedAccessException ex)
+            {
+                return BadRequest(new
+                {
+                    sucesso = false,
+                    dados = (object?)null,
+                    mensagem = ex.Message 
+                });
+            }
+        }
+
+        [HttpDelete("logout")]
         [Authorize(Policy = "ReadOnly")]
         public async Task<IActionResult> Logout()
         {
-            // 1) Extrai o header Authorization de forma segura
-            if (!Request.Headers.TryGetValue("Authorization", out var authHeaderValues))
-                return Unauthorized(new { message = "Authorization header missing" });
+            var header = Request.Headers["Authorization"].FirstOrDefault();
+            if (string.IsNullOrWhiteSpace(header)
+                || !header.StartsWith("Bearer ", StringComparison.OrdinalIgnoreCase))
+            {
+                return BadRequest(new { success = false, message = "Invalid Authorization header" });
+            }
 
-            var authHeader = authHeaderValues.FirstOrDefault();
-            if (string.IsNullOrWhiteSpace(authHeader))
-                return Unauthorized(new { message = "Authorization header missing" });
+            var token = header["Bearer ".Length..].Trim();
 
-            // 2) Separa esquema e token, ignorando casing
-            var parts = authHeader.Split(' ', 2, StringSplitOptions.RemoveEmptyEntries);
-            if (parts.Length != 2 || !parts[0].Equals("Bearer", StringComparison.OrdinalIgnoreCase))
-                return Unauthorized(new { message = "Authorization header malformed" });
-
-            var token = parts[1].Trim();
-
-            // 3) Chama o serviço de logout para remover o token do banco
-            await _auth.LogoutAsync(token);
-            return NoContent();
+            try
+            {
+                await _auth.LogoutAsync(token);
+                return Ok(new { success = true, message = "Logout efetuado com sucesso" });
+            }
+            catch (KeyNotFoundException)
+            {
+                return NotFound(new { success = false, message = "Token não encontrado" });
+            }
         }
-}
+    }
 }

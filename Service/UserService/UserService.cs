@@ -2,12 +2,7 @@
 using WebApi_Coris.Models;
 using WebApi_Coris.DataContext;
 using Microsoft.EntityFrameworkCore;
-
-using Intuit.Ipp.Data;
-using Microsoft.AspNetCore.Mvc;
 using WebApi_Coris.Models.Dtos;
-using Microsoft.AspNetCore.Identity;
-using Intuit.Ipp.WebhooksService;
 
 namespace WebApi_Coris.Service.UserService
 {
@@ -112,7 +107,7 @@ namespace WebApi_Coris.Service.UserService
             if (dto.password_hash is not null) entity.email = dto.password_hash;
             if (dto.is_active) entity.is_active = dto.is_active;
             if (dto.is_adm) entity.is_adm = dto.is_adm;
-            entity.updated_at = DateTime.UtcNow;
+            entity.updated_at = DateTime.Now;
 
             await _context.SaveChangesAsync();
 

@@ -2,9 +2,6 @@
 using WebApi_Coris.Models;
 using WebApi_Coris.DataContext;
 using Microsoft.EntityFrameworkCore;
-
-using Intuit.Ipp.Data;
-using Microsoft.AspNetCore.Mvc;
 using WebApi_Coris.Models.Dtos;
 
 namespace WebApi_Coris.Service.InsuredService
@@ -89,8 +86,8 @@ namespace WebApi_Coris.Service.InsuredService
                 neighborhood = dto.neighborhood,
                 city = dto.city,
                 state = dto.state,
-                created_at = DateTime.UtcNow,
-                updated_at = DateTime.UtcNow
+                created_at = DateTime.Now,
+                updated_at = DateTime.Now
             };
 
             _context.Insureds.Add(entity);
@@ -108,12 +105,17 @@ namespace WebApi_Coris.Service.InsuredService
             if (entity is null)
                 return ApiResponse<InsuredDto>.Fail("Segurado não encontrado");
 
-            // só atualiza os campos não nulos
             if (dto.name is not null) entity.name = dto.name;
             if (dto.cpf_cnpj is not null) entity.cpf_cnpj = dto.cpf_cnpj;
             if (dto.email is not null) entity.email = dto.email;
             if (dto.cell_phone is not null) entity.cell_phone = dto.cell_phone;
-            // e assim por diante...
+            if (dto.address is not null) entity.address = dto.address;
+            if (dto.address_line2 is not null) entity.address_line2 = dto.address_line2;
+            if (dto.neighborhood is not null) entity.neighborhood = dto.neighborhood;
+            if (dto.city is not null) entity.city = dto.city;
+            if (dto.state is not null) entity.state = dto.state;
+
+
             entity.updated_at = DateTime.UtcNow;
 
             await _context.SaveChangesAsync();

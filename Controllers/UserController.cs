@@ -1,11 +1,8 @@
-﻿using System.Threading;
-using Microsoft.AspNetCore.Authorization;
-using Microsoft.AspNetCore.Http;
+﻿using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using WebApi_Coris.Models;
 using WebApi_Coris.Models.Dtos;
 using WebApi_Coris.Service.Abstractions;
-using WebApi_Coris.Service.UserService;
 
 namespace WebApi_Coris.Controllers
 {
